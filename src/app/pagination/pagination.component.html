@@ -1,0 +1,43 @@
+<div *ngIf="pagedItems && pagedItems.length > 0" class="page-items">
+  <ng-container *ngFor="let item of pagedItems"> {{ item }}</ng-container>
+</div>
+
+<ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+  <li class="arrow-left" [ngClass]="{ disabled: pager.currentPage === 1 }">
+    <fa-icon
+      [icon]="faCaretLeft"
+      (click)="setPage(pager.currentPage - 1)"
+    ></fa-icon>
+  </li>
+  <li *ngIf="pager.firstThreeDots">
+    <a class="btn-page" (click)="setPage(1)">1</a>
+  </li>
+  <li *ngIf="pager.firstThreeDots" class="dots">
+    <span>...</span>
+  </li>
+  <li *ngFor="let page of pager.pages">
+    <a
+      class="btn-page"
+      [ngClass]="{ active: pager.currentPage === page }"
+      (click)="setPage(page)"
+      >{{ page }}</a
+    >
+  </li>
+  <li class="dots" *ngIf="pager.lastThreeDots" class="dots">
+    <span>...</span>
+  </li>
+  <li *ngIf="pager.lastThreeDots">
+    <a class="btn-page" (click)="setPage(pager.totalPages)">{{
+      pager.totalPages
+    }}</a>
+  </li>
+  <li
+    class="arrow-right"
+    [ngClass]="{ disabled: pager.currentPage === pager.totalPages }"
+  >
+    <fa-icon
+      [icon]="faCaretRight"
+      (click)="setPage(pager.currentPage + 1)"
+    ></fa-icon>
+  </li>
+</ul>

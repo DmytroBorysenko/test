@@ -1,52 +1,45 @@
-.pagination {
-    display: flex;
-    justify-content: center;
+.control {
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+  width: 500px;
+  box-sizing: border-box;
+  h2 {
+    padding: 10px 0;
+    text-align: center;
+  }
 
-    li{
-        cursor: pointer;
-        list-style: none;
-        margin: 0 3px;
-        display: flex;
-        align-items: center;
-
-        a {
-            display: block;
-            padding: 7px;
-            box-sizing: border-box;
-            width: 34px;
-            height: 34px;
-            border-radius: 10px;
-            background: #EDF1F5;
-            color: #BCC0C4;
-        }
-
-        fa-icon {
-            color: #BCC0C4;
-        }
+  p {
+    padding: 4px;
+    label {
+      color: #045466;
+      width: 30%;
+      display: inline-block;
+      text-align: end;
     }
-
-    .dots {
-        color: #BCC0C4; 
-        width: 28px;
-        height: 34px;
-        justify-content: center;
-        align-items: flex-end;
+    input {
+      margin: 0 7px;
+      padding: 3px;
+      box-sizing: border-box;
+      background: #f9f9f9;
+      border: solid #669bb66b 1px;
+      border-radius: 10px;
+      color: #015353;
     }
-
-    .disabled {
-        pointer-events: none;
-    
-    }
-
-    .active {
-        background-color: #0A8EFE !important;
-        color: #fff !important;
-    }
-    
+  }
+  .btn-start {
+    cursor: pointer;
+    margin: 7px 0;
+    color: #ececec;
+    padding: 3px 15px;
+    border: solid #24536c 1px;
+    background: #445f77;
+    border-radius: 5px;
+    text-align: center;
+    align-self: center;
+  }
+  .disabled-color {
+    background-color: #bcc0c4;
+    border: none;
+  }
 }
-
-.control{
-    margin: 50px 0;
-}
-
-

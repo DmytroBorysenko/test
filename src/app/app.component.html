@@ -1,41 +1,24 @@
-<div class="container">
-  <div class="text-center">
-    <div class="control">
-      <p>
-        <label for="total-pages">Total Pages:</label>
-        <input id="total-pages" type="number" [(ngModel)]="totalPages">
-      </p>
+<div class="control">
+  <h2>Editor Pagination</h2>
+  <p>
+    <label for="total-pages">Total Pages:</label>
+    <input id="total-pages" type="number" [(ngModel)]="numTotalPages" />
+  </p>
 
-      <p>
-        <label for="current-page">Current Page:</label>
-        <input id="current-page" type="number"  [(ngModel)]="currentPage">
-      </p>
-      <button (click)="generateItems(totalPages); setPage(currentPage)">Start</button>
-    </div>
-      <div *ngFor="let item of pagedItems">{{item}}</div>
+  <p>
+    <label for="current-page">Current Page:</label>
+    <input id="current-page" type="number" [(ngModel)]="numCurrentPage" />
+  </p>
 
-      <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
-          <li [ngClass]="{disabled:pager.currentPage === 1}">
-            <fa-icon [icon]="faCaretLeft" (click)="setPage(pager.currentPage - 1)"></fa-icon>
-          </li>
-          <li *ngIf="pager.firstThreeDots">
-            <a (click)="setPage(1)">1</a>
-          </li>
-          <li *ngIf="pager.firstThreeDots" class="dots">
-            <span>...</span>
-          </li>
-          <li *ngFor="let page of pager.pages">
-              <a [ngClass]="{active:pager.currentPage === page}" (click)="setPage(page)">{{page}}</a>
-          </li>
-          <li class="dots" *ngIf="pager.lastThreeDots" class="dots">
-            <span>...</span>
-          </li>
-          <li *ngIf="pager.lastThreeDots">
-            <a (click)="setPage(pager.totalPages)">{{pager.totalPages}}</a>
-          </li>
-          <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
-            <fa-icon [icon]="faCaretRight" (click)="setPage(pager.currentPage + 1)"></fa-icon>
-          </li>
-      </ul>
-  </div>
+  <button
+    class="btn-start"
+    [ngClass]="{
+      disabled: !numTotalPages || !numCurrentPage,
+      'disabled-color': !numTotalPages || !numCurrentPage
+    }"
+    (click)="loadDataInPagination()"
+  >
+    Start
+  </button>
 </div>
+<pagination [totalPages]="totalPages" [currentPage]="currentPage"></pagination>
